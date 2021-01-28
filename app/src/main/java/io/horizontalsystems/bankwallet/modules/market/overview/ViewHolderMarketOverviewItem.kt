@@ -79,10 +79,8 @@ class ViewHolderMarketOverviewItem(override val containerView: View, private val
                     val sign = if (v >= BigDecimal.ZERO) "+" else "-"
                     marketFieldValue.text = App.numberFormatter.format(v.abs(), 0, 2, sign, "%")
 
-                    val textColor = if (v >= BigDecimal.ZERO) R.attr.ColorRemus else R.attr.ColorLucian
-                    LayoutHelper.getAttr(textColor, containerView.context.theme)?.let {
-                        marketFieldValue.setTextColor(it)
-                    }
+                    val color = if (v >= BigDecimal.ZERO) R.color.remus else R.color.lucian
+                    marketFieldValue.setTextColor(containerView.resources.getColor(color, containerView.context.theme))
                 }
             }
         }
